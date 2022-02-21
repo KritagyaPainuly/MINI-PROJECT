@@ -345,7 +345,7 @@ void purchase()
 		else
 		{
 			gotoXY(10,8);
-			cout<<"SORRY NOT AVAILABLE";
+			cout<<"SORRY THERE IS NOT ENOUGH STOCK\tAVAILBLE STOCK:- "<<msm[i].stock;
 		}
 	}
 	}
@@ -355,7 +355,7 @@ void purchase()
 		cout<<"No Stock Available...!!!\a";
 	}
 	gotoXY(10,11);
-	cout<<"Press any Key to purchase more and 1 to quit ";
+	cout<<"Press 1 to CHECKOUT or other to continue PURCHASE";
     cin>>o;
 	if(o=='1')
 	break;
@@ -369,15 +369,17 @@ void bill(int arr[][2],int j,int total)
   gotoXY(26,4);
   printf("***PURCHASE BILL***");
   gotoXY(26,6);
-  cout<<"--------------------"<<endl;
+  cout<<"-------------------"<<endl;
   gotoXY(10,8);
   cout<<"NAME\t\tCOST\t\tAMOUNT";
-  for(int i=0;i<=j;i++)
+  int k=10;
+  for(int i=0;i<j;i++)
   {
-	  gotoXY(10,10);
+	  gotoXY(10,k);
+	  k=k+2;
 	  cout<<msm[arr[i][0]].name<<"\t\t"<<msm[arr[i][0]].cost<<"\t\t"<<arr[i][1];
   }
-  gotoXY(26,11);
+  gotoXY(27,k);
   cout<<"TOTAL BILL "<<total;
   getch();
 }
