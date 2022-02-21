@@ -1,3 +1,4 @@
+//Medical Store Mangement System id=admin pswrd=password
 #include<stdio.h>
 #include<iostream>
 #include<stdlib.h>
@@ -48,7 +49,97 @@ void Cdelay(int msec)
     long goal = msec + (clock());
     while (goal > (clock()));
 }
+void loginFrame1(int xLenS = 20, int yLenS = 8, int xLenE = 55, int yLenE = 15)
+{
+	system("cls");
+	gotoXY(xLenS,yLenS);printf("%c",201);	
+	gotoXY(xLenS,yLenE);printf("%c",200);
+    for(int i=xLenS+1;i<=xLenE-1;i++)     
+    {
+        gotoXY(i,yLenS);
+        printf("%c",205);
+        gotoXY(i,yLenE);
+        printf("%c",205);
 
+    }
+    gotoXY(xLenE,yLenS);printf("%c",187);
+    gotoXY(xLenE,yLenE);printf("%c",188);
+    for(int i=yLenS+1;i<=yLenE-1;i++)       
+    {
+        gotoXY(xLenS, i);
+        printf("%c",186);
+        gotoXY(xLenE, i);
+        printf("%c",186);
+    }
+    printf("\n\n");
+}
+void login()
+{
+	
+	char UserName[30],Password[30],ch;int i=0;
+	gotoXY(20,10);
+    printf("Enter UserName : ");
+    
+    cin>>UserName;
+    gotoXY(20,12);
+    cout<<"Enter Password : ";
+    while(1)
+    {
+    	ch = getch();
+    	if(ch==13)
+    		break;
+    	if(ch==32||ch==9)
+    		continue;
+    	else
+    	{
+			cout<<"*";
+			Password[i]=ch;
+			i++;
+    	}
+	}
+	Password[i] = '\0';
+    if(strcmp(UserName,"admin")==0 && strcmp(Password,"password")==0)
+    {
+    	system("cls");
+    	loginFrame1();
+    	gotoXY(27,10);
+    	cout<<"Login Success!!!";
+    	gotoXY(21,12);
+    	cout<<"Will be redirected in 3 Seconds...";
+    		gotoXY(56,12);
+    	Cdelay(300);
+    	gotoXY(44,12);
+    	cout<<"\b \b2";
+    		gotoXY(56,12);
+    	Cdelay(300);
+    	gotoXY(44,12);
+    	cout<<"\b \b1";
+    		gotoXY(56,12);
+    	Cdelay(300);
+	}
+	else
+	{
+		system("cls");
+    	loginFrame1();
+    	gotoXY(27,10);
+		printf("Access Denied!!!\a");
+    	gotoXY(21,12);
+    	cout<<"Will be redirected in 3 Seconds...";
+    		gotoXY(56,12);
+    	Cdelay(300);
+    	gotoXY(44,12);
+    	cout<<"\b \b2";
+    		gotoXY(56,12);
+    	Cdelay(300);
+    	gotoXY(44,12);
+    	cout<<"\b \b1";
+    		gotoXY(56,12);
+    	Cdelay(300);
+    	system("cls");
+    	loginFrame1();
+    	login();
+	}
+}
 void menu()
 {
 	system("cls");
@@ -355,7 +446,7 @@ void purchase()
 		cout<<"No Stock Available...!!!\a";
 	}
 	gotoXY(10,11);
-	cout<<"Press 1 to CHECKOUT or other to continue PURCHASE";
+	cout<<"Press 1 to CHECKOUT or other to continue PURCHASE  ";
     cin>>o;
 	if(o=='1')
 	break;
@@ -367,9 +458,9 @@ void bill(int arr[][2],int j,int total)
   system("cls");
   
   gotoXY(26,4);
-  printf("***PURCHASE BILL***");
+  printf("***CHECKOUT BILL***");
   gotoXY(26,6);
-  cout<<"-------------------"<<endl;
+  cout<<"--------------------"<<endl;
   gotoXY(10,8);
   cout<<"NAME\t\tCOST\t\tAMOUNT";
   int k=10;
@@ -380,16 +471,16 @@ void bill(int arr[][2],int j,int total)
 	  cout<<msm[arr[i][0]].name<<"\t\t"<<msm[arr[i][0]].cost<<"\t\t"<<arr[i][1];
   }
   gotoXY(27,k);
-  cout<<"TOTAL BILL "<<total;
+  cout<<"TOTAL BILL  "<<total;
   getch();
 }
 int main()
 {
 	setWindowSize();	
 	border();
-	//intro();    
+	intro();    
 	loginFrame();
-    //login();
+    login();
     menu();
     getrecords();
     char option;
