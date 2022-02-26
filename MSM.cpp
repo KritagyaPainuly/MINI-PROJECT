@@ -1,13 +1,8 @@
 //Medical Store Mangement System id=admin pswrd=password
-#include<stdio.h>
 #include<iostream>
-#include<stdlib.h>
-#include<string.h>
 #include<conio.h>
 #include<windows.h>
-#include<time.h>
 #include<iomanip>
-#include<ctype.h>
 #define max 50
 using namespace std;
 int num=0;
@@ -24,7 +19,7 @@ void login();
 void menu();
 void insert();
 void getrecords();
-bool isFilePresent();
+bool isFilePresent();2
 class Medicine
 {
 public:
@@ -214,10 +209,8 @@ void gotoXY(int X, int Y)
 void border(int xLenS = 2, int yLenS = 2,int xLenE = 76, int yLenE = 22 )
 {
 	system("cls");
-	gotoXY(xLenS,yLenS);printf("%c",201);
-	
-	gotoXY(xLenS,yLenE);printf("%c",200);
-	
+	gotoXY(xLenS,yLenS);printf("%c",201);	
+	gotoXY(xLenS,yLenE);printf("%c",200);	
     for(int i=xLenS+1;i<=xLenE-1;i++)         
     {
         gotoXY(i,yLenS);
@@ -481,6 +474,7 @@ int main()
 	intro();    
 	loginFrame();
     login();
+    border();
     menu();
     getrecords();
     char option;
