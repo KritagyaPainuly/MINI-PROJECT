@@ -19,7 +19,7 @@ void login();
 void menu();
 void insert();
 void getrecords();
-bool isFilePresent();2
+bool isFilePresent();
 class Medicine
 {
 public:
